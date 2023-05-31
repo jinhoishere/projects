@@ -7,10 +7,10 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class Main {
+    // 8. read bank accounts from file
     public static void readAccountsFromFile(ArrayList<Account> accounts) throws IOException {
         FileInputStream fileByteStream = new FileInputStream("bank3.csv");
         Scanner inFS = new Scanner(fileByteStream);
-
         // CSV: Comma-Separated Values
         while (inFS.hasNextLine()) {
             String line = inFS.nextLine();
@@ -23,11 +23,11 @@ public class Main {
                 accounts.add(a);
             }
         }
-
         inFS.close();
         fileByteStream.close();
     }
 
+    // 7. save bank accounts to file
     public static void saveAccountsToFile(ArrayList<Account> accounts) throws IOException {
         FileOutputStream fileOutStream = new FileOutputStream("bank3.csv");
         PrintWriter outFS = new PrintWriter(fileOutStream);
@@ -40,9 +40,9 @@ public class Main {
         fileOutStream.close();
     }
 
+    // 6. transfer between accounts
     public static void transferring(ArrayList<Account> accounts) {
         Scanner scnr = new Scanner(System.in);
-
         System.out.println("Type the \"from\" account number.");
         int from_account = scnr.nextInt();
         System.out.println("Type the \"to\" account number.");
@@ -64,13 +64,12 @@ public class Main {
                 }
             }
         }
-        
         scnr.close();
     }
 
+    // 5. withdraw from account
     public static void withDrawing(ArrayList<Account> accounts) {
         Scanner scnr = new Scanner(System.in);
-
         System.out.println("Type the account number.");
         int accountNumber = scnr.nextInt();
         System.out.println("Type the amount of deposit");
@@ -86,9 +85,9 @@ public class Main {
         scnr.close();
     }
     
+    // 4. deposit to account
     public static void depositing(ArrayList<Account> accounts) {
         Scanner scnr = new Scanner(System.in);
-
         System.out.println("Type the account number.");
         int accountNumber = scnr.nextInt();
         System.out.println("Type the amount of deposit");
@@ -102,9 +101,9 @@ public class Main {
         scnr.close();
     }
 
+    // 3. account details for account number
     public static void getDetailByAccountNum(ArrayList<Account> accounts) {
         Scanner scnr = new Scanner(System.in);
-
         System.out.println("Type the account number.");
         int accountNumber = scnr.nextInt();
 
@@ -116,9 +115,9 @@ public class Main {
         scnr.close();
     }
 
+    // 2. account details for user
     public static void getDetailByUserName(ArrayList<Account> accounts) {
         Scanner scnr = new Scanner(System.in);
-
         System.out.println("Type the username.");
         String userName = scnr.nextLine();
         
@@ -130,9 +129,9 @@ public class Main {
         scnr.close();
     }
 
+    // 1. add account
     public static Account accountCreate() {
         Scanner scnr = new Scanner(System.in);
-
         System.out.println("Provide information for the new account: ");
         System.out.print("Account owner: ");
         String owner = scnr.nextLine();
@@ -165,19 +164,19 @@ public class Main {
         ArrayList<Account> accounts = new ArrayList<>();
 
         do {
-
             while (keepPrompting) {                
+                userChoice = 0;
                 printMenu();
-                // Prompt user for input
                 try {
-                    userChoice = scnr.nextInt();
+                    userChoice = scnr.nextInt(); // Prompt user for input
                 } catch (Exception e) {
                     System.out.println("Invalid data type given. Expected integer.");
+                    System.out.println(e.getMessage());
                     scnr.next();
                     System.out.println("");
                     continue;
                 }
-
+                // all possible user input with switch statement
                 switch (userChoice) {
                     case 1: 
                             // Account newAccount = accountCreate();
@@ -228,10 +227,9 @@ public class Main {
                             break;
                 } // switch statement brace
             } // while loop brace
-            
         } while (userChoice != 10); // do-while loop brace
 
-    scnr.close();
+        scnr.close();
     } // main method brace
 
 }
