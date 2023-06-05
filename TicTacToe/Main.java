@@ -1,12 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TODO1. Design the game board as a two-dimensional array
-//TODO2. Write code to draw the game board in console
 //TODO3. Develop logic to check if a player wins
 //TODO4. Create a loop to allow players to take turns
 public class Main {
-    public static ArrayList<String> divideCells(char[][] board) {
+    public static ArrayList<String> assignPositions(char[][] board) {
         ArrayList<String> cells = new ArrayList<>(); // there are 9 cells(1-9) in the list.
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
@@ -27,6 +25,7 @@ public class Main {
         System.out.println("---------------");
     }
     public static void main(String args[]) {
+        Scanner scnr = new Scanner(System.in);
         Player p1 = new Player("Jinho", 'X');
         Player p2 = new Player("Abi", 'O');
 
@@ -35,12 +34,32 @@ public class Main {
             {'4', '5', '6'},
             {'7', '8', '9'}
         };
+        ArrayList<String> numbers = assignPositions(board);
         
-        while (p1.isWinner || p2.isWinner) {
+        boolean p2_turn = true;
+        boolean p1_turn = true;
+        char position;
+
+        while (p2_turn) {
+            while (p1_turn) {
+                printBoard(board);
+                System.out.print("Player 1, Where do you want to move to? ");
+                position = scnr.next().charAt(0);
+                if (p1.isValid(position, numbers)) {
+                    p1.moveTo(position, board);
+                }
+                else {
+                    System.out.println("That is not a valid move.");
+                    continue;
+                }
+                break;
+            }
             printBoard(board);
+            System.out.print("Player 2, Where do you want to move to? ");
+            position = scnr.next().charAt(0);
+            p2.moveTo(position, board);
         }
         
-
 
     }
 }
