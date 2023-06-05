@@ -5,7 +5,7 @@ import java.util.Scanner;
 //TODO4. Create a loop to allow players to take turns
 public class Main {
     public static ArrayList<String> assignPositions(char[][] board) {
-        ArrayList<String> cells = new ArrayList<>(); // there are 9 cells(1-9) in the list.
+        ArrayList<String> cells = new ArrayList<>(); // there are 9 numbers(1-9) in the list.
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
                 String currentCell = String.valueOf(board[i][j]);
@@ -34,7 +34,7 @@ public class Main {
             {'4', '5', '6'},
             {'7', '8', '9'}
         };
-        ArrayList<String> numbers = assignPositions(board);
+        ArrayList<String> cells = assignPositions(board);
         
         boolean p2_turn = true;
         boolean p1_turn = true;
@@ -45,11 +45,12 @@ public class Main {
                 printBoard(board);
                 System.out.print("Player 1, Where do you want to move to? ");
                 position = scnr.next().charAt(0);
-                if (p1.isValid(position, numbers)) {
+                if (p1.isValid(position, cells)) {
                     p1.moveTo(position, board);
+                    cells.set(Character.getNumericValue(position-1), String.valueOf(p1.getLetter()));
                 }
                 else {
-                    System.out.println("That is not a valid move.");
+                    System.out.println("That is not a valid move. (Player 1)");
                     continue;
                 }
                 break;
@@ -57,7 +58,14 @@ public class Main {
             printBoard(board);
             System.out.print("Player 2, Where do you want to move to? ");
             position = scnr.next().charAt(0);
-            p2.moveTo(position, board);
+            if (p2.isValid(position, cells)) {
+                p2.moveTo(position, board);
+                cells.set(Character.getNumericValue(position-1), String.valueOf(p2.getLetter()));
+            }
+            else {
+                System.out.println("That is not a valid move. (Player 2)");
+                continue;
+            }
         }
         
 

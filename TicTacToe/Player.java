@@ -16,6 +16,15 @@ public class Player {
         return this.playerLetter;
     }
 
+    //TODO
+    public boolean isValid(char position, ArrayList<String> cells) {
+        for (int i = 0; i < cells.size(); i++) {
+            if (cells.get(i).charAt(0) == position) {
+                return true;
+            }
+        }
+        return false;
+    }
     public char[][] moveTo(char position, char[][] board) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
@@ -26,15 +35,6 @@ public class Player {
             }
         }
         return board;
-    }
-    //TODO
-    public boolean isValid(char move, ArrayList<String> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i).charAt(0) == move) {
-                return true;
-            }
-        }
-        return false;
     }
 
     // public boolean isWinner() {
