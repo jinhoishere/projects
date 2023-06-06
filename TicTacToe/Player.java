@@ -19,7 +19,7 @@ public class Player {
         return this.playerLetter;
     }
 
-    // a method to check if a player's move is valid or not
+    // check if a player's move is valid or not
     public boolean isValidMove(char position, ArrayList<String> cells) {
         for (int i = 0; i < cells.size(); i++) {
             if (cells.get(i).charAt(0) == position) {
@@ -28,7 +28,8 @@ public class Player {
         }
         return false;
     }
-    // a method to move by a player's choice
+
+    // move as the player's choice
     public char[][] moveTo(char position, char[][] board) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -41,7 +42,54 @@ public class Player {
         return board;
     }
 
-    // public boolean isWinner() {
-    //     return false;
-    // }
+    // find who is a winner
+    public boolean isWinner(ArrayList<String> cells) {
+        // win cases - horizontal
+        if ((cells.get(0).charAt(0) == this.getLetter() && 
+            cells.get(1).charAt(0) == this.getLetter() && 
+            cells.get(2).charAt(0) == this.getLetter())) {
+            return true;
+        }
+        else if (cells.get(3).charAt(0) == this.getLetter() &&
+                cells.get(4).charAt(0) == this.getLetter() &&
+                cells.get(5).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        else if (cells.get(6).charAt(0) == this.getLetter() &&
+                cells.get(7).charAt(0) == this.getLetter() &&
+                cells.get(8).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        // win cases - vertical
+        else if (cells.get(0).charAt(0) == this.getLetter() &&
+                cells.get(3).charAt(0) == this.getLetter() &&
+                cells.get(6).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        else if (cells.get(1).charAt(0) == this.getLetter() &&
+                cells.get(4).charAt(0) == this.getLetter() &&
+                cells.get(7).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        else if (cells.get(2).charAt(0) == this.getLetter() &&
+                cells.get(5).charAt(0) == this.getLetter() &&
+                cells.get(8).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        // win cases - diagonal
+        else if (cells.get(0).charAt(0) == this.getLetter() &&
+                cells.get(4).charAt(0) == this.getLetter() &&
+                cells.get(8).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        else if (cells.get(2).charAt(0) == this.getLetter() &&
+                cells.get(4).charAt(0) == this.getLetter() &&
+                cells.get(6).charAt(0) == this.getLetter()) {
+            return true;
+        }
+        // a winner hasn't been decided yet, keep playing
+        else {
+            return false;
+        }
+    }
 }
