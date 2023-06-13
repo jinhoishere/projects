@@ -5,61 +5,59 @@ import java.awt.*;
 import java.io.File; // to find a path of ImageIcon named "icon"
 
 public class Hangman {
+    public static Icon resizeIcon(ImageIcon icon, int resizedWidth, int resizedHeight) {
+        Image img = icon.getImage();
+        Image resizedImage = img.getScaledInstance(resizedWidth, resizedHeight, 0);
+        return new ImageIcon(resizedImage);
+    }
+
     public Hangman() {
         // a label in leftpanel
-        JLabel label1 = new JLabel();
-        ImageIcon image1 = new ImageIcon("/home/jinhoishere/github/projects/Hangman/1.png");
-        // System.out.println(new File("/home/jinhoishere/github/projects/Hangman/1.png").exists());
-        // ImageIcon image1 = new ImageIcon("/home/jinhoishere/projects/Hangman/1.png");
-        // System.out.println(new File("/home/jinhoishere/projects/Hangman/1.png").exists());
-        label1.setIcon(image1);
-        label1.setVerticalAlignment(JLabel.CENTER);
-        label1.setHorizontalAlignment(JLabel.CENTER);
-        // label1.setBounds(0,0,75,75);
-
-        // main panel = panel 1 (left panel) + panel 2 (right panel)
+        JLabel leftLabel = new JLabel();
+        ImageIcon image0 = new ImageIcon("/home/jinhoishere/github/projects/Hangman/0.png");
+        // System.out.println(new File("/home/jinhoishere/github/projects/Hangman/0.png").exists());
+        // ImageIcon image1 = new ImageIcon("/home/jinhoishere/projects/Hangman/0.png");
+        // System.out.println(new File("/home/jinhoishere/projects/Hangman/0.png").exists());
+        leftLabel.setIcon(resizeIcon(image0, 700, 900));
+        leftLabel.setVerticalAlignment(JLabel.CENTER);
+        leftLabel.setHorizontalAlignment(JLabel.CENTER);
+        // label1.setOpaque(true);
+        
+        // main panel = (JLabel)leftLabel + (JPanel)rightPanel
         JPanel mainPanel = new JPanel();
-        mainPanel.setBackground(new Color(44,44,44)); // dark gray
+        mainPanel.setBackground(new Color(211,211,211)); // light gray
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        mainPanel.add(leftLabel);
 
-        // panel 1, this panel will have a hangman image in it
-        JPanel leftPanel = new JPanel();
-        // leftPanel.setBackground(new Color(44,44,44));
-        leftPanel.setBackground(Color.red);
-        leftPanel.add(label1);
-        mainPanel.add(leftPanel);
-
-        // panel 2, this panel will have rightTopPanel(panel 2-1) and rightBottomPanel (panel 2-2)
+        // rightPanel = rightTopPanel + rightBottomPanel
         JPanel rightPanel = new JPanel();
-        // rightPanel.setBackground(new Color(44,44,44));
+        // rightPanel.setBackground(new Color(211,211,211));
         rightPanel.setBackground(Color.orange);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         mainPanel.add(rightPanel);
 
-        // panel 2-1, this panel will have blanks to fill in
+        // rightTopPanel will have blanks to fill in
         JPanel rightTopPanel = new JPanel();
-        // rightTopPanel.setBackground(new Color(44,44,44));
+        // rightTopPanel.setBackground(new Color(211,211,211));
         rightTopPanel.setBackground(Color.yellow);
         rightPanel.add(rightTopPanel);
 
-        // panel 2-2, this panell will have keyboards with buttons to select letters
+        // rightBottomPanel will have keyboards with buttons to select letters
         JPanel rightBottomPanel = new JPanel();
-        // rightBottomPanel.setBackground(new Color(44,44,44));
+        // rightBottomPanel.setBackground(new Color(211,211,211));
         rightBottomPanel.setBackground(Color.green);
         rightPanel.add(rightBottomPanel);
 
 
         // frame
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Hangman by Jinho Nam");
         ImageIcon icon = new ImageIcon("/home/jinhoishere/github/projects/Hangman/H.png");
         // System.out.println(new File("/home/jinhoishere/github/projects/Hangman/H.png").exists()); 
         // ImageIcon icon = new ImageIcon("/home/jinhoishere/projects/Hangman/H.png");
         // System.out.println(new File("/home/jinhoishere/projects/Hangman/H.png").exists()); 
         frame.setIconImage(icon.getImage());
-        frame.setTitle("Hangman by Jinho Nam");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setLayout(new BorderLayout());
+        frame.setSize(1280, 1024);
         frame.setResizable(true);
         frame.getContentPane().setBackground(Color.black);
         frame.setVisible(true);
