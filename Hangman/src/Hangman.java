@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Hangman {
     // main method
-    public static void main (String[] args) throws FileNotFoundException{
+    public static void main (String[] args) throws FileNotFoundException {
         System.out.println("----------------------------");
         System.out.println("| <Hangman by Jinho Nam>   |");
         System.out.println("|- Github: jinhoishere     |");
@@ -26,7 +26,7 @@ public class Hangman {
         
     }
 
-    public Hangman() {
+    public Hangman() throws FileNotFoundException {
         // leftLabel belongs to mainPanel
         JLabel leftLabel = new JLabel();
         ImageIcon image0 = new ImageIcon("/home/jinhoishere/projects/Hangman/lib/0.png");
@@ -53,6 +53,9 @@ public class Hangman {
         JPanel rightTopPanel = new JPanel();
         // rightTopPanel.setBackground(new Color(211,211,211));
         rightTopPanel.setBackground(Color.yellow);
+        // TODO: display word with underscores
+        JLabel displayWord = new JLabel(getRandomWord(extractTextFile()));
+        rightTopPanel.add(displayWord);
         rightPanel.add(rightTopPanel);
 
         // (JPanel)rightBottomPanel will have keyboards with buttons to guess spelling of the word
@@ -60,7 +63,7 @@ public class Hangman {
         // rightBottomPanel.setBackground(new Color(211,211,211));
         rightBottomPanel.setBackground(Color.green);
         setButtonsAt(rightBottomPanel);
-        // TODO: There will be a way to customize the layout of buttons with GridBagLayout() and GridBagConstraints()
+        //TODO: There will be a way to customize the layout of buttons with GridBagLayout() and GridBagConstraints()
         rightBottomPanel.setLayout(new GridLayout(3, 9, 10, 20));
         rightPanel.add(rightBottomPanel);
 
