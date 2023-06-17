@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 
 public class RightPanel extends JPanel {
     public RightPanel() {
-        // this.setBackground(new Color(211,211,211));
-        this.setBackground(Color.orange);
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        // setBackground(new Color(211,211,211));
+        setBackground(Color.orange);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 }
