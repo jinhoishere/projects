@@ -1,13 +1,12 @@
 package Hangman.src;
 
-// TODO2: choose a random word in the arraylist and display it with underscores
-// make a label as many as the number of letters in the word ?
-// TODO2-1: there will be 'n' underscores as proportion to the number of letters in the chosen word.
-// TODO2-2: make a class named "word"
-
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
@@ -30,8 +29,8 @@ public class Main {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
 
         // (LeftLabel) lb
-        LeftLabel lb = new LeftLabel();
-        mainPanel.add(lb);
+        LeftLabel ll = new LeftLabel("/home/jinhoishere/projects/Hangman/lib/0.png");
+        mainPanel.add(ll);
 
         // (RightPanel) rp = (TopPanel) top + (BottomPanel) bottom
         RightPanel rp = new RightPanel();
@@ -39,10 +38,16 @@ public class Main {
         
         // (TopPanel) top will have blanks to fill in
         TopPanel top = new TopPanel();
+        top.setRandomWord(pickRandomWord(new File("/home/jinhoishere/projects/Hangman/lib/wordList.txt")));
+        top.setUnderscores(top.getRandomWord());
+        top.setAnswers(top.getRandomWord());
+        top.addComponents();
         rp.add(top);
 
-        // (BottomPanel) bottom will have keyboards with buttons to guess spelling of the word
+        // (BottomPanel) bottom will have keyboards with buttons to guess alphabets of the word
         BottomPanel bottom = new BottomPanel();
+        bottom.setButtons(mainPanel, ll, top, top.getRandomWord(), bottom);
+        bottom.addComponents();
         rp.add(bottom);
 
         // (JFrame)frame = (JPanel)mainPanel
@@ -58,5 +63,18 @@ public class Main {
 
         frame.add(mainPanel);
         frame.pack();
+    }
+
+    public static String pickRandomWord(File f) throws FileNotFoundException {
+        Scanner readFile = new Scanner(f);
+        ArrayList<String> randomWords = new ArrayList<>();
+        while (readFile.hasNextLine()) {
+            String currentWord = readFile.nextLine();
+            randomWords.add(currentWord);
+        }
+        Random randNumGen = new Random();
+        int randNum = randNumGen.nextInt(randomWords.size()) + 1;
+        String randomWord = randomWords.get(randNum);
+        return randomWord;
     }
 }
