@@ -7,32 +7,36 @@ import javax.swing.JPanel;
 
 // RightPanel - BottomPanel
 public class BottomPanel extends JPanel {
-    private ArrayList<Alphabet> buttons;
+    private ArrayList<Button> buttons = new ArrayList<>();
+    private Button b;
 
     public BottomPanel() {
-        setBackground(new Color(211,211,211));
+        this.setBackground(new Color(211,211,211));
         // this.setBackground(Color.green);
-        //TODO: There will be a way to customize the layout of buttons with GridBagLayout() and GridBagConstraints()
-        setLayout(new GridLayout(3, 9, 10, 20));
-        setButtons();
+        //TODO: There is a way to customize the layout of buttons with GridBagLayout() and GridBagConstraints()
+        this.setLayout(new GridLayout(3, 9, 10, 20));
     }
 
-    // RightBottomPanel
     // make buttons A-Z and add them in the rightBottomPanel
-    public void setButtons() {
+    public void setButtons(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, BottomPanel bottom) {
         char c = 'A';
-        buttons = new ArrayList<>();
         for (int i = 0; i < 26; i++) {
-            Alphabet button = new Alphabet(c); // adjust numbers to arrange buttons in the panel
+            b = new Button(c, mainPanel, ll, top, randomWord, bottom); 
+            // adjust numbers to arrange buttons in the panel
             // Alphabet button = new Alphabet(c, 100, 70);
-            button.addActionListener(new MyActionListener());
-            buttons.add(button);
-            this.add(button);
+            buttons.add(b);
+            this.add(b);
             c += 1;
         }
     }
 
-    public ArrayList<Alphabet> getButtons() {
-        return buttons;
+    public ArrayList<Button> getButtons() {
+        return this.buttons;
+    }
+
+    public void addComponents() {
+        for (int i = 0; i < buttons.size(); i++) {
+            this.add(buttons.get(i));
+        }
     }
 }

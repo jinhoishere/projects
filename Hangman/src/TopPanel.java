@@ -1,7 +1,5 @@
 package Hangman.src;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -9,60 +7,87 @@ import java.awt.*;
 // RightPanel - TopPanel
 public class TopPanel extends JPanel {
     private String randomWord;
-    private ArrayList<String> randomWords;
-    private ArrayList<JLabel> underscores;
+    private JLabel currentUnderscore;
+    private ArrayList<JLabel> underscores = new ArrayList<>();
+    private ArrayList<Character> answers = new ArrayList<>();
 
-    public TopPanel() throws FileNotFoundException {
+    public TopPanel() {
         // this.setBackground(Color.yellow);
-        setBackground(new Color(211,211,211));
-        setRandomWords();
-        setRandomWord();
-        setUnderscores();
-        randomWord = this.getRandomWord();
-        randomWords = this.getRandomWords();
-        underscores = this.getUnderscores();
-    }
-
-
-    // read words in the file and set an arraylist of them
-    public void setRandomWords() throws FileNotFoundException {
-        randomWords = new ArrayList<>();
-        Scanner readFile = new Scanner(new File("/home/jinhoishere/projects/Hangman/lib/wordList.txt"));
-        while (readFile.hasNextLine()) {
-            String currentWord = readFile.nextLine();
-            randomWords.add(currentWord);
-        }
-    }
-
-    // get an arraylist of random words
-    public ArrayList<String> getRandomWords() {
-        return randomWords;
+        this.setBackground(new Color(211,211,211));
     }
 
     // set a random word from the word list
-    public void setRandomWord() {
-        Random randNumGen = new Random();
-        int randNum = randNumGen.nextInt(randomWords.size()) + 1;
-        randomWord = randomWords.get(randNum);
+    public void setRandomWord(String randomWord) {
+        this.randomWord = randomWord;
     }
 
     // choose a word from the word list randomly
     public String getRandomWord() {
-        return randomWord;
+        return this.randomWord;
     }
 
-    // set an arraylist of (JLabel)underscores
-    public void setUnderscores() {
+    // set an arraylist of (JLabel)underscores to display
+    public void setUnderscores(String randomWord) {
         for (int i = 0; i < randomWord.length(); i++) {
-            JLabel l = new JLabel();
-            l.setText("_");
-            l.setFont(new Font("Calibri", Font.PLAIN, 64));
-            this.add(l);
+            currentUnderscore = new JLabel();
+            currentUnderscore.setText("_");
+            currentUnderscore.setFont(new Font("Calibri", Font.PLAIN, 64));
+            underscores.add(currentUnderscore);
         }
     }
 
     // get an arraylist of (JLabel)underscores
     public ArrayList<JLabel> getUnderscores() {
-        return underscores;
+        return this.underscores;
+    }
+
+    // set an arraylist for answers
+    public void setAnswers(String randomWord) {
+        for (int i = 0; i < randomWord.length(); i++) {
+            answers.add(randomWord.charAt(i));
+        }
+    }
+
+    // get an arraylist of answers
+    public ArrayList<Character> getAnswers() {
+        return this.answers;
+    }
+
+    public boolean contains(char valueOfButton) {
+        for (int i = 0; i < this.answers.size(); i++) {
+            if (equalIgnoreCase(this.answers.get(i), (Character) valueOfButton)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // TODO
+    public void openUp(char valueOfButton) {
+        for (int i = 0; i < underscores.size(); i++) {
+            if (underscores.get(i).getText().charAt(0) == valueOfButton) {
+                char data[] = {valueOfButton};
+                String str = new String(data);
+                underscores.get(i).setText("");
+                underscores.get(i).setText(str);
+            }
+        }
+    }
+
+    public void addComponents() {
+        for (int i = 0; i < underscores.size(); i++) {
+            this.add(underscores.get(i));
+        }
+    }
+
+    public static boolean equalIgnoreCase(Character c1, Character c2) {
+        String s1 = String.valueOf(c1);
+        String s2 = String.valueOf(c2);
+        if (s1.equalsIgnoreCase(s2)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
