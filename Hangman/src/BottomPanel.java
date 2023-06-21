@@ -13,7 +13,7 @@ public class BottomPanel extends JPanel {
     public BottomPanel() {
         this.setBackground(new Color(211,211,211));
         // this.setBackground(Color.green);
-        //TODO: There is a way to customize the layout of buttons with GridBagLayout() and GridBagConstraints()
+        // There is a way to customize the layout of buttons with GridBagLayout() and GridBagConstraints()
         this.setLayout(new GridLayout(3, 9, 10, 20));
     }
 

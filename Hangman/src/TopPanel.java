@@ -62,13 +62,13 @@ public class TopPanel extends JPanel {
         return false;
     }
 
-    // TODO
+    // TODO1: how to show correct guesses
     public void openUp(char valueOfButton) {
-        for (int i = 0; i < underscores.size(); i++) {
-            if (underscores.get(i).getText().charAt(0) == valueOfButton) {
+        for (int i = 0; i < answers.size(); i++) {
+            Character c = answers.get(i);
+            if (equalIgnoreCase(c, (Character)valueOfButton)) {
                 char data[] = {valueOfButton};
                 String str = new String(data);
-                underscores.get(i).setText("");
                 underscores.get(i).setText(str);
             }
         }
