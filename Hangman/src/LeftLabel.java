@@ -5,9 +5,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+// mainPanel - LeftLabel
 public class LeftLabel extends JLabel {
+    // field
     private ImageIcon image;
 
+    // constructor
     public LeftLabel(String path) {
         image = new ImageIcon(path);
         // System.out.println(new File("/home/jinhoishere/projects/Hangman/lib/0.png").exists());
@@ -24,11 +27,13 @@ public class LeftLabel extends JLabel {
         return new ImageIcon(resizedImage);
     }
 
+    // a method to set an image at the left label
     public void setImage(String path) {
         ImageIcon image = new ImageIcon(path);
         this.setIcon(resizeIcon(image, 600, 800));
     }
 
+    // a method to get an image at the left label
     public ImageIcon getImage() {
         return this.image;
     }

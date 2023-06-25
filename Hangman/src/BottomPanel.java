@@ -5,11 +5,13 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-// RightPanel - BottomPanel
+// mainPanel - RightPanel - BottomPanel
 public class BottomPanel extends JPanel {
+    // field
     private ArrayList<Button> buttons = new ArrayList<>();
     private Button b;
 
+    // constructor
     public BottomPanel() {
         this.setBackground(new Color(211,211,211));
         // this.setBackground(Color.green);
@@ -30,10 +32,12 @@ public class BottomPanel extends JPanel {
         }
     }
 
+    // a method to get buttons in bottom panel
     public ArrayList<Button> getButtons() {
         return this.buttons;
     }
 
+    // a method to add all buttons to bottom panel
     public void addComponents() {
         for (int i = 0; i < buttons.size(); i++) {
             this.add(buttons.get(i));

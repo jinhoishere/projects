@@ -23,7 +23,7 @@ public class Main {
     }
 
     public Main() throws FileNotFoundException {        
-        // (JPanel) mainpanel = (LeftLabel) lb + (RightPanel) rp
+        // (JPanel) mainPanel = (LeftLabel) lb + (RightPanel) rp
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(new Color(211,211,211)); // light gray
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));

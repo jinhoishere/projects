@@ -4,13 +4,15 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 
-// RightPanel - TopPanel
+// mainPanel - RightPanel - TopPanel
 public class TopPanel extends JPanel {
+    // field
     private String randomWord;
     private JLabel currentUnderscore;
     private ArrayList<JLabel> underscores = new ArrayList<>();
     private ArrayList<Character> answers = new ArrayList<>();
 
+    // constructor
     public TopPanel() {
         // this.setBackground(Color.yellow);
         this.setBackground(new Color(211,211,211));
@@ -53,6 +55,7 @@ public class TopPanel extends JPanel {
         return this.answers;
     }
 
+    // check if the random word has a value in button or not
     public boolean contains(char valueOfButton) {
         for (int i = 0; i < this.answers.size(); i++) {
             if (equalIgnoreCase(this.answers.get(i), (Character) valueOfButton)) {
@@ -62,7 +65,7 @@ public class TopPanel extends JPanel {
         return false;
     }
 
-    // TODO1: how to show correct guesses
+    // change an underscore into a value in the button
     public void openUp(char valueOfButton) {
         for (int i = 0; i < answers.size(); i++) {
             Character c = answers.get(i);
@@ -74,12 +77,14 @@ public class TopPanel extends JPanel {
         }
     }
 
+    // add components to display at the top panel
     public void addComponents() {
         for (int i = 0; i < underscores.size(); i++) {
             this.add(underscores.get(i));
         }
     }
 
+    // check if two characters are equal or not
     public static boolean equalIgnoreCase(Character c1, Character c2) {
         String s1 = String.valueOf(c1);
         String s2 = String.valueOf(c2);
