@@ -64,7 +64,7 @@ public class MyActionListener implements ActionListener {
             }
             ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png"); // change this path whenever this file path changes
             b.setEnabled(false);
-            System.out.println("The answer word doesn't have " + currentValue + ". You have " + (6-numTry) + " chances left.");
+            System.out.println("The answer word doesn't have " + currentValue + ". You have " + (6-numTry) + " chance(s) left.");
         }
     }
 

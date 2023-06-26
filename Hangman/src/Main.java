@@ -47,10 +47,15 @@ public class Main {
         top.addComponents();
         rp.add(top);
 
+        MiddlePanel mid = new MiddlePanel();
+        rp.add(mid);
+
         // (BottomPanel) bottom will have keyboards with buttons to guess alphabets of the word
         BottomPanel bottom = new BottomPanel();
+        // bottom.setButtons_row1(mainPanel, ll, top, top.getRandomWord(), bottom);
+        // bottom.setButtons_row2(mainPanel, ll, top, top.getRandomWord(), bottom);
+        // bottom.setButtons_row3(mainPanel, ll, top, top.getRandomWord(), bottom);
         bottom.setButtons(mainPanel, ll, top, top.getRandomWord(), bottom);
-        bottom.addComponents();
         rp.add(bottom);
 
         // (JFrame)frame = (JPanel)mainPanel

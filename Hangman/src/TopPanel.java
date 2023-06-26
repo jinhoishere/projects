@@ -7,6 +7,7 @@ import java.awt.*;
 // mainPanel - RightPanel - TopPanel
 public class TopPanel extends JPanel {
     // field
+    // private GridBagConstraints c = new GridBagConstraints();
     private String randomWord;
     private JLabel currentUnderscore;
     private ArrayList<JLabel> underscores = new ArrayList<>();
@@ -14,10 +15,14 @@ public class TopPanel extends JPanel {
 
     // constructor
     public TopPanel() {
-        // this.setBackground(Color.yellow);
-        this.setBackground(new Color(211,211,211));
+        this.setBackground(Color.yellow);
+        // this.setBackground(new Color(211,211,211));
+        // this.setLayout(new GridBagLayout());
+        this.setLayout(new FlowLayout());
+        this.setBorder(BorderFactory.createEmptyBorder(100, 50, 50, 50));
     }
 
+    
     // set a random word from the word list
     public void setRandomWord(String randomWord) {
         this.randomWord = randomWord;
