@@ -10,7 +10,7 @@ The workspace contains two folders by default, where:
 - `(JFrame)frame` = `(JPanel)mainPanel`
 - `(JPanel)mainPanel` = `(LeftLabel)ll` extends JLabel + `(RightPanel)rp` extends JPanel
 - `(RightPanel)rp` = `(TopPanel)top` extends JPanel + `(BottomPanel)bottom` extends JPanel
-- `(BottonPanel)bottom` = `(Button)b`
+- `(BottonPanel)bottom` = `(Button)b` extends JButton
 - `(Button)b` = `(MyActionListener)e` extends ActionListener
 
 
