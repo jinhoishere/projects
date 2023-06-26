@@ -1,4 +1,4 @@
-package Hangman.src;
+// package Hangman.src;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;

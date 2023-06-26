@@ -1,4 +1,4 @@
-package Hangman.src;
+// package Hangman.src;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +9,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    private String image_0 = "/home/jinhoishere/projects/Hangman/lib/0.png";
+    private String wordList = "/home/jinhoishere/projects/Hangman/lib/wordList.txt";
+    private String mainIcon = "/home/jinhoishere/projects/Hangman/lib/H.png";
 
     // main method
     public static void main (String[] args) throws FileNotFoundException {
@@ -29,7 +32,7 @@ public class Main {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
 
         // (LeftLabel) lb
-        LeftLabel ll = new LeftLabel("/home/jinhoishere/projects/Hangman/lib/0.png");
+        LeftLabel ll = new LeftLabel(image_0);
         mainPanel.add(ll);
 
         // (RightPanel) rp = (TopPanel) top + (BottomPanel) bottom
@@ -38,7 +41,7 @@ public class Main {
         
         // (TopPanel) top will have blanks to fill in
         TopPanel top = new TopPanel();
-        top.setRandomWord(pickRandomWord(new File("/home/jinhoishere/projects/Hangman/lib/wordList.txt")));
+        top.setRandomWord(pickRandomWord(new File(wordList)));
         top.setUnderscores(top.getRandomWord());
         top.setAnswers(top.getRandomWord());
         top.addComponents();
@@ -52,7 +55,7 @@ public class Main {
 
         // (JFrame)frame = (JPanel)mainPanel
         JFrame frame = new JFrame("Hangman");
-        ImageIcon icon = new ImageIcon("/home/jinhoishere/projects/Hangman/lib/H.png");
+        ImageIcon icon = new ImageIcon(mainIcon);
         // System.out.println(new File("/home/jinhoishere/projects/Hangman/lib/H.png").exists()); 
         frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

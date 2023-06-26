@@ -1,4 +1,4 @@
-package Hangman.src;
+// package Hangman.src;
 
 import java.util.*;
 import javax.swing.*;

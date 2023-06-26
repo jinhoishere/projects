@@ -1,4 +1,4 @@
-package Hangman.src;
+// package Hangman.src;
 
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class MyActionListener implements ActionListener {
     // fields
+    private String image_5 = "/home/jinhoishere/projects/Hangman/lib/5.png";
+    private String image_6 = "/home/jinhoishere/projects/Hangman/lib/6.png";
     private static int numTry; // max 6 - game ends
     private int randNum;
     private JPanel mainPanel;
@@ -52,15 +54,15 @@ public class MyActionListener implements ActionListener {
         else {
             numTry += 1;
             if (numTry == 5) {
-                ll.setImage("/home/jinhoishere/projects/Hangman/lib/5.png");
+                ll.setImage(image_5);
                 JOptionPane.showMessageDialog(null, "You have ONLY 1 chance left!", "Notice", JOptionPane.WARNING_MESSAGE);
             }
             else if (numTry == 6) {
-                ll.setImage("/home/jinhoishere/projects/Hangman/lib/6.png");
+                ll.setImage(image_6);
                 JOptionPane.showMessageDialog(null, "You used all chances :(" + "\n" + "The answer was \"" + randomWord + "\"" + "\n" + "Game ends.", "Notice", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
-            ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png");
+            ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png"); // change this path whenever this file path changes
             b.setEnabled(false);
             System.out.println("The answer word doesn't have " + currentValue + ". You have " + (6-numTry) + " chances left.");
         }

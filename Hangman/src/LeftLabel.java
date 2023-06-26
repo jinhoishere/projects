@@ -1,4 +1,4 @@
-package Hangman.src;
+// package Hangman.src;
 
 import java.awt.Image;
 import javax.swing.Icon;
