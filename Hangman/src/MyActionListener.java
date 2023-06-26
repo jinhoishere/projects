@@ -24,15 +24,16 @@ public class MyActionListener implements ActionListener {
         this.bottom = bottom;
     }
 
-
+    // set a reaction for each button
     public void actionPerformed(ActionEvent e) {
         Random randNumGen = new Random();
         char currentValue = e.getActionCommand().charAt(0);
         JButton b = (JButton) e.getSource();
+        // if a value of button is in the random word,
         if (top.contains(currentValue)) {
             top.openUp(currentValue);
-            // b.setEnabled(false);
-            b.setVisible(false);
+            b.setEnabled(false);
+            // b.setVisible(false);
             randNum = randNumGen.nextInt(3);
             switch (randNum) {
                 case 0: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Nice shot.");
@@ -42,10 +43,12 @@ public class MyActionListener implements ActionListener {
                 case 2: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Good guess.");
                 break;
             }
+            // if a player meets win condition, the player wins
             if (meetsWinCondition()) {
                 win();
             }
         }
+        // if a value of button is NOT in the random word,
         else {
             numTry += 1;
             if (numTry == 5) {
