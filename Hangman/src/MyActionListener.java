@@ -58,7 +58,7 @@ public class MyActionListener implements ActionListener {
             }
             else if (numTry == 6) {
                 ll.setImage(image_6);
-                JOptionPane.showMessageDialog(null, "You used all chances :(" + "\n" + "The answer was \"" + randomWord + "\"" + "\n" + "Game ends.", "Notice", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You used all chances :(" + "\n" + "The answer was \"" + randomWord + "\"" + "\n" + "Click OK to end the game.", "Notice", JOptionPane.ERROR_MESSAGE);
                 System.out.println("You used all chance, the answer was \"" + randomWord + "\"" + "\n" + "Game ends.");
                 System.exit(0);
             }
