@@ -1,5 +1,6 @@
 // package Hangman.src;
 
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,16 +17,10 @@ public class Button extends JButton {
         char data[] = {value}; // (char) value needs to be changed into (string) value
         String str = new String(data);
         this.setText(str); // this.value = value;
+        this.setFont(new Font("Calibri", Font.PLAIN, 70));
         this.setBorder(BorderFactory.createEtchedBorder());
         this.addActionListener(new MyActionListener(mainPanel, ll, top, randomWord, bottom));
     }
-
-    // public Alphabet(char content, int x, int y) {
-    //     this.content = content;
-    //     this.setText(content);
-    //     this.setBorder(BorderFactory.createEtchedBorder());
-    //     this.setBounds(x, y, width, height);
-    // }
 
     // a method to set a value to a button
     public void setValue(char value) {

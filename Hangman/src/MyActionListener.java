@@ -35,7 +35,6 @@ public class MyActionListener implements ActionListener {
         if (top.contains(currentValue)) {
             top.openUp(currentValue);
             b.setEnabled(false);
-            // b.setVisible(false);
             randNum = randNumGen.nextInt(3);
             switch (randNum) {
                 case 0: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Nice shot.");
@@ -60,6 +59,7 @@ public class MyActionListener implements ActionListener {
             else if (numTry == 6) {
                 ll.setImage(image_6);
                 JOptionPane.showMessageDialog(null, "You used all chances :(" + "\n" + "The answer was \"" + randomWord + "\"" + "\n" + "Game ends.", "Notice", JOptionPane.ERROR_MESSAGE);
+                System.out.println("You used all chance, the answer was \"" + randomWord + "\"" + "\n" + "Game ends.");
                 System.exit(0);
             }
             ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png"); // change this path whenever this file path changes

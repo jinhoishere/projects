@@ -15,8 +15,8 @@ public class TopPanel extends JPanel {
 
     // constructor
     public TopPanel() {
-        this.setBackground(Color.yellow);
-        // this.setBackground(new Color(211,211,211));
+        // this.setBackground(Color.yellow);
+        this.setBackground(new Color(211,211,211));
         // this.setLayout(new GridBagLayout());
         this.setLayout(new FlowLayout());
         this.setBorder(BorderFactory.createEmptyBorder(100, 50, 50, 50));
