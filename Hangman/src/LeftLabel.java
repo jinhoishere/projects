@@ -7,13 +7,12 @@ import javax.swing.JLabel;
 
 // mainPanel - LeftLabel
 public class LeftLabel extends JLabel {
-    // field
+    // fields
     private ImageIcon image;
 
     // constructor
     public LeftLabel(String path) {
         image = new ImageIcon(path);
-        // System.out.println(new File("/home/jinhoishere/projects/Hangman/lib/0.png").exists());
         setIcon(resizeIcon(image, 600, 800));
         setVerticalAlignment(JLabel.CENTER);
         setHorizontalAlignment(JLabel.CENTER);
