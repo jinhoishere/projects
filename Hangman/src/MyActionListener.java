@@ -10,40 +10,33 @@ public class MyActionListener implements ActionListener {
     private String image_5 = "/home/jinhoishere/projects/Hangman/lib/5.png";
     private String image_6 = "/home/jinhoishere/projects/Hangman/lib/6.png";
     private static int numTry; // max 6 - game ends
-    private int randNum;
     private JPanel mainPanel;
     private LeftLabel ll;
     private TopPanel top;
     private String randomWord;
+    private MiddlePanel mid;
     private BottomPanel bottom;
 
     // constructor
-    public MyActionListener(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, BottomPanel bottom) {
+    public MyActionListener(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, MiddlePanel mid, BottomPanel bottom) {
         this.mainPanel = mainPanel;
         this.ll = ll;
         this.top = top;
         this.randomWord = randomWord;
+        this.mid = mid;
         this.bottom = bottom;
     }
 
     // set a reaction for each button
     public void actionPerformed(ActionEvent e) {
-        Random randNumGen = new Random();
+        // Random randNumGen = new Random();
         char currentValue = e.getActionCommand().charAt(0);
         JButton b = (JButton) e.getSource();
         // if a value of button is in the random word,
         if (top.contains(currentValue)) {
             top.openUp(currentValue);
             b.setEnabled(false);
-            randNum = randNumGen.nextInt(3);
-            switch (randNum) {
-                case 0: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Nice shot.");
-                break;
-                case 1: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Well tried.");
-                break;
-                case 2: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Good guess.");
-                break;
-            }
+            printMessage_correct(currentValue);
             // if a player meets win condition, the player wins
             if (meetsWinCondition()) {
                 win();
@@ -64,8 +57,27 @@ public class MyActionListener implements ActionListener {
             }
             ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png"); // change this path whenever this file path changes
             b.setEnabled(false);
-            System.out.println("The answer word doesn't have " + currentValue + ". You have " + (6-numTry) + " chance(s) left.");
+            printMessage_incorrect(currentValue, numTry);
         }
+    }
+
+    // print a reaction message when the guess is correct
+    public void printMessage_correct(char currentValue) {
+        Random randNumGen = new Random();
+        int randNum = randNumGen.nextInt(3);
+            switch (randNum) {
+                case 0: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Nice shot.");
+                break;
+                case 1: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Well tried.");
+                break;
+                case 2: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Good guess.");
+                break;
+            }
+    }
+
+    // print a reaction message when the guess is NOT correct
+    public void printMessage_incorrect(char currentValue, int numTry) {
+        System.out.println("The answer word doesn't have " + currentValue + ". You have " + (6-numTry) + " chance(s) left.");
     }
 
     // check if a player wins or not
