@@ -44,11 +44,11 @@ public class BottomPanel extends JPanel {
     // }
 
     // create buttons A-J
-    public void setButtons_row1(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, BottomPanel bottom) {
+    public void setButtons_row1(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, MiddlePanel mid, BottomPanel bottom) {
         char buttonValue_row1 = 'A';
         int x = 0;
         for (int i = 0; i < 10; i++) {
-            b = new Button(buttonValue_row1, mainPanel, ll, top, randomWord, bottom); 
+            b = new Button(buttonValue_row1, mainPanel, ll, top, randomWord, mid, bottom); 
             setMyConstraints(c, x, 0, 35, 30, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
             buttons.add(b);
             this.add(b, c);
@@ -58,11 +58,11 @@ public class BottomPanel extends JPanel {
     }
 
     // create buttons K-S
-    public void setButtons_row2(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, BottomPanel bottom) {
+    public void setButtons_row2(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, MiddlePanel mid, BottomPanel bottom) {
         char buttonValue_row2 = 'K';
         int x = 30;
         for (int i = 10; i < 19; i++) {
-            b = new Button(buttonValue_row2, mainPanel, ll, top, randomWord, bottom);
+            b = new Button(buttonValue_row2, mainPanel, ll, top, randomWord, mid, bottom);
             setMyConstraints(c, x, 30, 35, 30, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
             buttons.add(b);
             this.add(b, c);
@@ -72,11 +72,11 @@ public class BottomPanel extends JPanel {
     }
 
     // create buttons T-Z
-    public void setButtons_row3(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, BottomPanel bottom) {
+    public void setButtons_row3(JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, MiddlePanel mid, BottomPanel bottom) {
         char buttonValue_row3 = 'T';
         int x = 70;
         for (int i = 19; i < 26; i++) {
-            b = new Button(buttonValue_row3, mainPanel, ll, top, randomWord, bottom);
+            b = new Button(buttonValue_row3, mainPanel, ll, top, randomWord, mid, bottom);
             setMyConstraints(c, x, 60, 35, 30, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
             buttons.add(b);
             this.add(b, c);

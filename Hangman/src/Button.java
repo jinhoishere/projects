@@ -13,13 +13,14 @@ public class Button extends JButton {
     // private int height = 0;
 
     // constructor
-    public Button(char value, JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, BottomPanel bottom) {
+    public Button(char value, JPanel mainPanel, LeftLabel ll, TopPanel top, String randomWord, MiddlePanel mid, BottomPanel bottom) {
         char data[] = {value}; // (char) value needs to be changed into (string) value
         String str = new String(data);
         this.setText(str); // this.value = value;
         this.setFont(new Font("Calibri", Font.PLAIN, 70));
         this.setBorder(BorderFactory.createEtchedBorder());
-        this.addActionListener(new MyActionListener(mainPanel, ll, top, randomWord, bottom));
+        MyActionListener e = new MyActionListener(mainPanel, ll, top, randomWord, mid, bottom);
+        this.addActionListener(e);
     }
 
     // a method to set a value to a button
