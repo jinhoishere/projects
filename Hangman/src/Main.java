@@ -47,7 +47,7 @@ public class Main {
         top.addComponents();
         rp.add(top);
 
-        // TODO1: show messages as the player chooses buttons
+        // TODO1: incorrect messages doesn't show up when selected
         MiddlePanel mid = new MiddlePanel();
         rp.add(mid);
 

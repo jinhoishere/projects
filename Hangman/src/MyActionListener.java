@@ -51,13 +51,14 @@ public class MyActionListener implements ActionListener {
             }
             else if (numTry == 6) {
                 ll.setImage(image_6);
+                mid.setJLabelText("You used all chances. The answer was " + "\"" + randomWord + "\".");
                 JOptionPane.showMessageDialog(null, "You used all chances :(" + "\n" + "The answer was \"" + randomWord + "\"" + "\n" + "Click OK to end the game.", "Notice", JOptionPane.ERROR_MESSAGE);
                 System.out.println("You used all chance, the answer was \"" + randomWord + "\"" + "\n" + "Game ends.");
                 System.exit(0);
             }
             ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png"); // change this path whenever this file path changes
             b.setEnabled(false);
-            printMessage_incorrect(currentValue, numTry);
+            printMessage_incorrect(currentValue);
         }
     }
 
@@ -67,17 +68,21 @@ public class MyActionListener implements ActionListener {
         int randNum = randNumGen.nextInt(3);
             switch (randNum) {
                 case 0: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Nice shot.");
+                        mid.setJLabelText("The word has " + "\"" + currentValue + "\"" + ". " + "Nice shot.");
                 break;
                 case 1: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Well tried.");
+                        mid.setJLabelText("The word has " + "\"" + currentValue + "\"" + ". " + "Well tried.");
                 break;
                 case 2: System.out.println("The word has " + "\"" + currentValue + "\"" + ". " + "Good guess.");
+                        mid.setJLabelText("The word has " + "\"" + currentValue + "\"" + ". " + "Good guess.");
                 break;
             }
     }
 
     // print a reaction message when the guess is NOT correct
-    public void printMessage_incorrect(char currentValue, int numTry) {
-        System.out.println("The answer word doesn't have " + currentValue + ". You have " + (6-numTry) + " chance(s) left.");
+    public void printMessage_incorrect(char currentValue) {
+        System.out.println("The answer word doesn't have " + "\"" + currentValue + "\"" + ". You have " + (6-numTry) + " chance(s) left.");
+        mid.setJLabelText("The answer word doesn't have " + "\"" + currentValue + "\"" + ". You have " + (6-numTry) + " chance(s) left.");
     }
 
     // check if a player wins or not
@@ -95,7 +100,7 @@ public class MyActionListener implements ActionListener {
     public void win() {
         System.out.println("<You got it! The word was \"" + this.top.getRandomWord() + "\">");
         Object[] options = {"OK"};
-        JOptionPane.showOptionDialog(null, "You got it!" + "\n"+ "Click OK to close the window.", "Notice", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options);
+        JOptionPane.showOptionDialog(null, "You got it!" + "\n"+ "Click OK to close the window.", "NOTICE", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options);
         System.exit(0);
     }
 }
