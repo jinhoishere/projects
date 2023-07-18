@@ -29,7 +29,6 @@ public class MyActionListener implements ActionListener {
 
     // set a reaction for each button
     public void actionPerformed(ActionEvent e) {
-        // Random randNumGen = new Random();
         char currentValue = e.getActionCommand().charAt(0);
         JButton b = (JButton) e.getSource();
         // if a value of button is in the random word,
@@ -81,8 +80,8 @@ public class MyActionListener implements ActionListener {
 
     // print a reaction message when the guess is NOT correct
     public void printMessage_incorrect(char currentValue) {
-        System.out.println("The answer word doesn't have " + "\"" + currentValue + "\"" + ". You have " + (6-numTry) + " chance(s) left.");
-        mid.setJLabelText("The answer word doesn't have " + "\"" + currentValue + "\"" + ". You have " + (6-numTry) + " chance(s) left.");
+        System.out.println("The word doesn't have " + "\"" + currentValue + "\"" + ". You have " + (6-numTry) + " chance(s) left.");
+        mid.setJLabelText("The word doesn't have " + "\"" + currentValue + "\"" + ". You have " + (6-numTry) + " chance(s) left.");
     }
 
     // check if a player wins or not
