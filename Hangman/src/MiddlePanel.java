@@ -20,9 +20,9 @@ public class MiddlePanel extends JPanel {
         
     }
 
-    public JLabel getLabel() {
-        return l;
-    }
+    // public JLabel getLabel() {
+    //     return l;
+    // }
 
     public void setJLabelText(String s) {
         l = new JLabel();
