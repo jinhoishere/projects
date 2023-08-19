@@ -16,7 +16,7 @@ public class Main {
         
         checkInputValidity(userNumPage, scnr);
 
-        print("Fetching %s...", currentURL);
+        print("> Fetching %s...", currentURL);
         System.out.println("");   
         
         // create # of pages
@@ -42,19 +42,14 @@ public class Main {
         }
         
         displayGoals(urls);
-
-        for (int i = 0; i < pages.size(); i++) {
-            System.out.println(pages.get(i).getURL());
-        }
-        System.out.println("");
         
         // Display links of the last page first and links of the first page last.
         int currentIndex = userNumPage - 1;
         while (currentIndex >= 0) {
             Page currentPage = pages.get(currentIndex);
-            System.out.println("Display links in the page (" + 
+            System.out.println("> Display links in the page (" + 
                                 (userNumPage - currentIndex) + "/" + userNumPage + ")." + 
-                                " Used " + count + " link(s) so far.");
+                                " Your current score is " + count + ".");
             displayLinksOf(currentPage);
             System.out.print("\nGive a corresponding number of URL to move on to next page (1-30): ");
             int userInput = scnr.nextInt();
@@ -99,9 +94,9 @@ public class Main {
     public static void displayGoals(ArrayList<String> randLinks) {
         String starting_url = randLinks.get(0);
         String ending_url = randLinks.get(randLinks.size()-1);
-        System.out.println("Track back pages by finding a link that leads to next page. \n" +
-                            "Your first choice will be <" + ending_url + ">, \n" +
-                            "And the last choice will be <" + starting_url + ">\n");
+        System.out.println("> Track back pages by finding a link that leads to next page. \n" +
+                            "> Your first choice will be <" + ending_url + ">, \n" +
+                            "> And the last choice will be <" + starting_url + ">\n");
     }
 
     // a method to display extracted links of the page
