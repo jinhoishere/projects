@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class MyActionListener implements ActionListener {
     // fields
-    private String image_5 = "/home/jinhoishere/projects/Hangman/lib/5.png";
-    private String image_6 = "/home/jinhoishere/projects/Hangman/lib/6.png";
+    private String image_5 = "./lib/5.png";
+    private String image_6 = "./lib/6.png";
     private static int numTry; // max 6 - game ends
     private JPanel mainPanel;
     private LeftLabel ll;
@@ -55,7 +55,7 @@ public class MyActionListener implements ActionListener {
                 System.out.println("You used all chance, the answer was \"" + randomWord + "\"" + "\n" + "Game ends.");
                 System.exit(0);
             }
-            ll.setImage("/home/jinhoishere/projects/Hangman/lib/" + numTry + ".png"); // change this path whenever this file path changes
+            ll.setImage("./lib/" + numTry + ".png"); // change this path whenever this file path changes
             b.setEnabled(false);
             printMessage_incorrect(currentValue);
         }

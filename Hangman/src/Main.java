@@ -9,9 +9,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    private String image_0 = "/home/jinhoishere/projects/Hangman/lib/0.png";
-    private String wordList = "/home/jinhoishere/projects/Hangman/lib/wordList.txt";
-    private String mainIcon = "/home/jinhoishere/projects/Hangman/lib/H.png";
+    private String image_0 = "./lib/0.png";
+    private String wordList = "./lib/wordList.txt";
+    private String mainIcon = "./lib/H.png";
 
     // main method
     public static void main (String[] args) throws FileNotFoundException {
@@ -47,7 +47,7 @@ public class Main {
         top.addComponents();
         rp.add(top);
 
-        // TODO1: incorrect messages doesn't show up when selected
+        // (MiddlePanel) mid
         MiddlePanel mid = new MiddlePanel();
         rp.add(mid);
 
@@ -62,7 +62,7 @@ public class Main {
         // (JFrame)frame = (JPanel)mainPanel
         JFrame frame = new JFrame("Hangman");
         ImageIcon icon = new ImageIcon(mainIcon);
-        // System.out.println(new File("/home/jinhoishere/projects/Hangman/lib/H.png").exists()); 
+        // System.out.println(new File("/home/jinho/projects/personal_projects/Hangman/lib/H.png").exists()); 
         frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1280, 1024);
