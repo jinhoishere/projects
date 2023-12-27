@@ -11,8 +11,8 @@ The workspace contains two folders, where:
 - `(JPanel)mainPanel` = `(LeftLabel)ll` + `(RightPanel)rp`
 - `(RightPanel)rp` = `(TopPanel)top` + `(MiddlePanel)mid` + `(BottomPanel)bottom`
 
-- `(TopPanel)top` displays blanks(underscores).
-- `(BottonPanel)bottom` has `(Button)b`s, and each `(Button)b` has `(MyActionListener)e`
+> `(TopPanel)top` displays blanks(underscores).
+> `(BottonPanel)bottom` has `(Button)b`s, and each `(Button)b` has `(MyActionListener)e`
 
 ## File paths
 
